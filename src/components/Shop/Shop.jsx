@@ -18,7 +18,9 @@ const Shop = () => {
         loadData();
       }, []);
 
-      const
+      const handleAddCart = (id) => {
+        console.log(id)
+      }
 
   return (
     <div className="shop-container">
@@ -28,7 +30,7 @@ const Shop = () => {
                 <Product></Product>
             })} */}
             {products.map( product => {
-                return <Product key={product.id} product={product} />;
+                return <Product key={product.id} product={product} handleAddCart={handleAddCart} />;
             })}
 
         </div>
