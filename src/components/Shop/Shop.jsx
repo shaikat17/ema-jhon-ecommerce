@@ -18,6 +18,8 @@ const Shop = () => {
         loadData();
       }, []);
 
+      const
+
   return (
     <div className="shop-container">
         <div className="products-container">
@@ -26,7 +28,7 @@ const Shop = () => {
                 <Product></Product>
             })} */}
             {products.map( product => {
-                return <Product key={product.id} />;
+                return <Product key={product.id} product={product} />;
             })}
 
         </div>
