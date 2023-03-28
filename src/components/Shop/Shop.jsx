@@ -68,10 +68,6 @@ const Shop = () => {
   return (
     <div className="shop-container">
         <div className="products-container">
-            {/* {products.map( product => {
-                console.log(product);
-                <Product></Product>
-            })} */}
             {products.map( product => {
                 return <Product key={product.id} product={product} handleAddCart={handleAddCart} />;
             })}
