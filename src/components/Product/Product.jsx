@@ -19,10 +19,9 @@ const Product = (props) => {
         </div>
         <button
           className="btn-cart"
-          onClick={() => handleAddCart(id)}
+          onClick={() => handleAddCart(product)}
         >
-          Add to Cart
-          <FontAwesomeIcon icon={faShoppingCart} />
+          Add to Cart <FontAwesomeIcon icon={faShoppingCart} />
         </button>
       </div>
     );

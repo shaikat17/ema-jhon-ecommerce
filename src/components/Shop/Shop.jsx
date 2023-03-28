@@ -5,6 +5,7 @@ import './Shop.css'
 const Shop = () => {
 
       const [products, setProducts] = useState([]);
+      const [cart, setCart] = useState([])
 
       useEffect(() => {
         const loadData = async () => {
@@ -18,8 +19,9 @@ const Shop = () => {
         loadData();
       }, []);
 
-      const handleAddCart = (id) => {
-        console.log(id)
+      const handleAddCart = (product) => {
+        setCart(prev => [...prev, product])
+        console.log(cart)
       }
 
   return (
