@@ -11,7 +11,11 @@ const Orders = () => {
 
     // console.log(savedCart)
 
-    
+    const handleRemoveFromCart = (id) => {
+        const remaining = cart.filter( product => product.id !== id)
+        setCart(remaining)
+        
+    }
 
     return (
         <div className='shop-container'>
