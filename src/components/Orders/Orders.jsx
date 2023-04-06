@@ -17,13 +17,18 @@ const Orders = () => {
         removeFromDb(id)
     }
 
+    const handleClearCart = () => {
+        setCart([])
+    }
+
     return (
         <div className='shop-container'>
             <div className='review-container'>
                 {cart.map( product => <ReviewItem key={product.id} product={product} handleRemoveFromCart={handleRemoveFromCart}/>)}
             </div>
             <div className='cart-container'>
-                <Cart cart={cart} />
+                <Cart cart={cart} 
+                handleClearCart={handleClearCart}/>
             </div>
         </div>
     );
