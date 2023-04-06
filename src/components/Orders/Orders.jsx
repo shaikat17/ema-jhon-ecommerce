@@ -4,6 +4,7 @@ import Cart from '../Cart/Cart';
 import { useLoaderData } from 'react-router-dom';
 import { ReviewItem } from '../ReviewItem/ReviewItem';
 import { removeFromDb } from '../utilities/fakedb';
+import { deleteShoppingCart } from '../utilities/fakedb';
 
 const Orders = () => {
     const savedCart = useLoaderData()
@@ -19,6 +20,7 @@ const Orders = () => {
 
     const handleClearCart = () => {
         setCart([])
+        deleteShoppingCart()
     }
 
     return (
