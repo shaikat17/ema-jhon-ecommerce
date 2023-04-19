@@ -27,7 +27,7 @@ const Login = () => {
   </div>
 
   <div class="container" style={{backgroundColor:"#f1f1f1"}}>
-    <Link><button type="button" class="cancelbtn">Register</button></Link>
+    <Link to="/register"><button type="button" class="cancelbtn">Register</button></Link>
     <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
