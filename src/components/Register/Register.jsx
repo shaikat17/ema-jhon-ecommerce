@@ -1,8 +1,11 @@
 import React from 'react';
 import './Register.css'
 import { Link } from 'react-router-dom';
+import { useGlobalContext } from '../../Context';
 
 const Register = () => {
+
+  const { createUser } = useGlobalContext()
 
 const formHandler = (e) => {
 e.preventDefault()
@@ -15,11 +18,21 @@ const password = form.psw.value
 const passwordRepeat = form.pswRepeat.value
 
 console.log({userName, email, password, passwordRepeat})
+
+createUser(email, password)
+.then( userCredential => {
+  const user = userCredential.user
+
+  console.log(user)
+})
+.catch(error => {
+  console.log(error.message)
+})
 }
 
     return (
     <form onSubmit={formHandler}>
-            <div class="container">
+            <div className="container">
             <h1>Register</h1>
             <p>Please fill in this form to create an account.</p>
             <hr />
@@ -38,10 +51,10 @@ console.log({userName, email, password, passwordRepeat})
             <hr />
             <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
-            <button type="submit" class="registerbtn">Register</button>
+            <button type="submit" className="registerbtn">Register</button>
   </div>
   
-  <div class="container signin">
+  <div className="container signin">
     <p>Already have an account? <Link to="/login">Sign in</Link>.</p>
   </div>
 </form>
