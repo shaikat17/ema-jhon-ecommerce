@@ -5,12 +5,7 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC2xzfhocJuTaptdtmfcax1IEbwzt2t3DE",
-  authDomain: "simple-firebase-8aaf4.firebaseapp.com",
-  projectId: "simple-firebase-8aaf4",
-  storageBucket: "simple-firebase-8aaf4.appspot.com",
-  messagingSenderId: "331804984180",
-  appId: "1:331804984180:web:6734ef2e3a1df3f5852221"
+  
 };
 
 // Initialize Firebase

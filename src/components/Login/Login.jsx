@@ -4,11 +4,31 @@ import { useGlobalContext } from "../../Context";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const value = useGlobalContext();
+  const {signIn} = useGlobalContext();
 
-  console.log(value);
+  // console.log(value)
+
+  const formHandler = (e) => {
+    e.preventDefault()
+
+    const form = e.target
+    const username = form.uname.value
+    const email = form.email.value
+    const password = form.psw.value
+
+    console.log(username, email, password)
+
+    // console.log(username)
+
+    signIn(email, password)
+    .then(userCredential => {
+      const user = userCredential.user
+      console.log(user)
+    })
+    .catch(error => console.log(error.message))
+  }
   return (
-    <form action="/action_page.php" method="post">
+    <form onSubmit={formHandler}>
   <div className="imgcontainer">
     <img src={"https://www.w3schools.com/howto/img_avatar2.png"} alt="Avatar" className="avatar" />
   </div>
@@ -16,6 +36,8 @@ const Login = () => {
   <div className="container">
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required />
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Enter email" name="email" required />
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required />

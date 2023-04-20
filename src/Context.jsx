@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import app from "./firebase/firebase.init";
 
 const AppContext = createContext();
@@ -12,7 +12,11 @@ const AppProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    return <AppContext.Provider value={{createUser}}>{children}</AppContext.Provider>
+    const signIn = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    return <AppContext.Provider value={{createUser, signIn}}>{children}</AppContext.Provider>
 };
 
 
