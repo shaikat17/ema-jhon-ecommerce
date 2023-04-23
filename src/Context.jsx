@@ -1,5 +1,5 @@
-import { createContext, useContext } from "react";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createContext, useContext, useEffect, useState } from "react";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import app from "./firebase/firebase.init";
 
 const AppContext = createContext();
@@ -7,16 +7,40 @@ const AppContext = createContext();
 const auth = getAuth(app)
 
 const AppProvider = ({ children }) => {
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true);
 
     const createUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const signIn = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    return <AppContext.Provider value={{createUser, signIn}}>{children}</AppContext.Provider>
+    // observer user auth state 
+    useEffect( ()=>{
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser);
+            setLoading(false);
+        });
+
+        // stop observing while unmounting 
+        return () =>{
+            return unsubscribe();
+        }
+    }, [])
+
+    const nInformation = {
+        createUser,
+        signIn,
+        user,
+        setUser
+    }
+
+    return <AppContext.Provider value={nInformation}>{children}</AppContext.Provider>
 };
 
 
