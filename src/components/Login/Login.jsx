@@ -1,12 +1,16 @@
 import React from "react";
 import './Login.css'
 import { useGlobalContext } from "../../Context";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const {signIn} = useGlobalContext();
+  const navigate = useNavigate()
+  const location = useLocation()
 
   // console.log(value)
+
+  const from = location.state?.from?.pathname || '/'
 
   const formHandler = (e) => {
     e.preventDefault()
@@ -23,6 +27,8 @@ const Login = () => {
     signIn(email, password)
     .then(userCredential => {
       const user = userCredential.user
+      form.reset()
+      navigate(form, {replace: true})
       console.log(user)
     })
     .catch(error => console.log(error.message))

@@ -1,8 +1,11 @@
 import React from 'react'
+import { useGlobalContext } from '../../Context'
 
 const CheckOut = () => {
+  const {user} = useGlobalContext()
+  console.log(user)
   return (
-    <div>CheckOut</div>
+    <div>{user.email}</div>
   )
 }
 
