@@ -17,3 +17,14 @@ nav.header a {
 nav.header a:hover {
     color: orange;
 }
+
+.hButton {
+    background-color: transparent;
+    height: auto;
+    width: auto;
+    margin: 0;
+}
+
+.hButton:hover {
+    color: orange;
+}

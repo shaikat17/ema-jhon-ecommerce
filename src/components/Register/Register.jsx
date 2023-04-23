@@ -1,11 +1,12 @@
 import React from 'react';
 import './Register.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../Context';
 
 const Register = () => {
 
   const { createUser } = useGlobalContext()
+  const navigate = useNavigate()
 
 const formHandler = (e) => {
 e.preventDefault()
@@ -24,6 +25,7 @@ createUser(email, password)
   const user = userCredential.user
 
   console.log(user)
+  navigate('/')
 })
 .catch(error => {
   console.log(error.message)
